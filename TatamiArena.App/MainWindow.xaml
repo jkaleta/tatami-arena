@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    xmlns:xaml="clr-namespace:Microsoft.UI.Xaml;assembly=Microsoft.WinUI"
+    x:Class="TatamiArena.App.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TatamiArena.App"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="TatamiArena.App">
+
+    <Grid>
+        <NavigationView x:Name="NavView" 
+                    PaneDisplayMode="Left"
+                    IsSettingsVisible="False"
+                    IsBackButtonVisible="Collapsed"
+                    Header="Tatami Arena">
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Home" Content="Home" Tag="home"/>
+                <NavigationViewItem Icon="List" Content="Competitions" Tag="competitions"/>
+                <NavigationViewItem Icon="List" Content="Categories" Tag="categories"/>
+                <NavigationViewItem Icon="People" Content="Competitors" Tag="competitors"/>
+            </NavigationView.MenuItems>
+            <Frame x:Name="ContentFrame"/>
+        </NavigationView>
+    </Grid>
+</Window>

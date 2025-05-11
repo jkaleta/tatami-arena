@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TatamiArena.App (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "TatamiArena.App (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="TatamiArena.App.Pages.CategoriesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TatamiArena.App.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Padding="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <CommandBar Grid.Row="0" DefaultLabelPosition="Right">
+            <AppBarButton Icon="Add" Label="Add Category" Click="AddCategory_Click"/>
+        </CommandBar>
+
+        <ListView Grid.Row="1" 
+                  x:Name="CategoriesListView"
+                  Margin="0,12,0,0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Text="{Binding Name}" Style="{StaticResource TitleTextBlockStyle}"/>
+                            <TextBlock>
+                                <Run Text="{Binding Type}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding Sex}"/>
+                                <Run Text=" - Age: "/>
+                                <Run Text="{Binding MinAge}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding MaxAge}"/>
+                                <Run Text=" - Weight: "/>
+                                <Run Text="{Binding MinWeight}"/>
+                                <Run Text=" - "/>
+                                <Run Text="{Binding MaxWeight}"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <TextBlock Grid.Column="1" 
+                                 Text="{Binding Competition.Name}"
+                                 Style="{StaticResource BodyTextBlockStyle}"
+                                 VerticalAlignment="Top"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page> 
