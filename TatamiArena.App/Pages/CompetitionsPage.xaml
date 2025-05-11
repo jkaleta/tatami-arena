@@ -33,7 +33,7 @@
                             <TextBlock Text="{Binding Description}" Style="{StaticResource BodyTextBlockStyle}"/>
                         </StackPanel>
                         <TextBlock Grid.Column="1" 
-                                 Text="{Binding CreatedAt, StringFormat='{}{0:d}'}"
+                                 Text="{Binding CreatedAt}"
                                  Style="{StaticResource BodyTextBlockStyle}"
                                  VerticalAlignment="Top"/>
                     </Grid>

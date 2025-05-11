@@ -9,15 +9,22 @@ namespace TatamiArena.App
         public MainWindow()
         {
             this.InitializeComponent();
+            
+            // Set up the navigation event handler
+            NavView.SelectionChanged += NavView_SelectionChanged;
+            
+            // Set the initial page to Home
             NavView.SelectedItem = NavView.MenuItems[0];
-            NavView_SelectionChanged(NavView, null);
+            ContentFrame.Navigate(typeof(HomePage));
         }
 
         private void NavView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             if (args.SelectedItemContainer is NavigationViewItem item)
             {
-                switch (item.Tag.ToString())
+                string tag = item.Tag?.ToString() ?? string.Empty;
+                
+                switch (tag)
                 {
                     case "home":
                         ContentFrame.Navigate(typeof(HomePage));

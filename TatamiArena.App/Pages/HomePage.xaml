@@ -14,7 +14,7 @@
                      Style="{StaticResource TitleLargeTextBlockStyle}"/>
             <TextBlock Text="Your Karate Tournament Management System" 
                      Style="{StaticResource SubtitleTextBlockStyle}"/>
-            
+
             <Grid Margin="0,24,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -30,7 +30,8 @@
                              Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Name="CompetitionsCount" 
                              Text="0"
-                             Style="{StaticResource DisplayLargeTextBlockStyle}"/>
+                             Style="{StaticResource DisplayLargeTextBlockStyle}"
+                    />
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" 
