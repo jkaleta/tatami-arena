@@ -3,17 +3,19 @@
     x:Class="TatamiArena.App.Pages.HomePage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TatamiArena.App.Pages"
+    xmlns:local="using:TatamiArena.App"
+    xmlns:services="using:TatamiArena.App.Services"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Padding="24">
-        <StackPanel Spacing="16">
-            <TextBlock Text="Welcome to Tatami Arena" 
-                     Style="{StaticResource TitleLargeTextBlockStyle}"/>
-            <TextBlock Text="Your Karate Tournament Management System" 
-                     Style="{StaticResource SubtitleTextBlockStyle}"/>
+    <Grid Padding="12">
+        <StackPanel Spacing="12">
+            <TextBlock Style="{StaticResource TitleLargeTextBlockStyle}"
+                       Text="{x:Bind services:LocalizationService.Instance.GetString('WelcomeToTatamiArena'), Mode=OneWay}"/>
+            
+            <TextBlock Style="{StaticResource BodyTextBlockStyle}"
+                       Text="{x:Bind services:LocalizationService.Instance.GetString('HomePageDescription'), Mode=OneWay}"/>
 
             <Grid Margin="0,24,0,0">
                 <Grid.ColumnDefinitions>
@@ -26,12 +28,11 @@
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                           Padding="16"
                           CornerRadius="8">
-                    <TextBlock Text="Competitions" 
+                    <TextBlock Text="{x:Bind services:LocalizationService.Instance.GetString('Competitions'), Mode=OneWay}" 
                              Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Name="CompetitionsCount" 
                              Text="0"
-                             Style="{StaticResource DisplayLargeTextBlockStyle}"
-                    />
+                             Style="{StaticResource DisplayLargeTextBlockStyle}"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" 
@@ -39,7 +40,7 @@
                           Padding="16"
                           CornerRadius="8"
                           Margin="16,0">
-                    <TextBlock Text="Categories" 
+                    <TextBlock Text="{x:Bind services:LocalizationService.Instance.GetString('Categories'), Mode=OneWay}" 
                              Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Name="CategoriesCount" 
                              Text="0"
@@ -50,13 +51,33 @@
                           Background="{ThemeResource CardBackgroundFillColorDefaultBrush}"
                           Padding="16"
                           CornerRadius="8">
-                    <TextBlock Text="Competitors" 
+                    <TextBlock Text="{x:Bind services:LocalizationService.Instance.GetString('Competitors'), Mode=OneWay}" 
                              Style="{StaticResource TitleTextBlockStyle}"/>
                     <TextBlock x:Name="CompetitorsCount" 
                              Text="0"
                              Style="{StaticResource DisplayLargeTextBlockStyle}"/>
                 </StackPanel>
             </Grid>
+            
+            <TextBlock Style="{StaticResource SubtitleTextBlockStyle}"
+                       Text="{x:Bind services:LocalizationService.Instance.GetString('QuickActions'), Mode=OneWay}"
+                       Margin="0,24,0,0"/>
+            
+            <ItemsControl>
+                <ItemsControl.Items>
+                    <HyperlinkButton Content="{x:Bind services:LocalizationService.Instance.GetString('ManageCompetitions'), Mode=OneWay}"
+                                   NavigateUri="competitions"/>
+                    <HyperlinkButton Content="{x:Bind services:LocalizationService.Instance.GetString('ManageCategories'), Mode=OneWay}"
+                                   NavigateUri="categories"/>
+                    <HyperlinkButton Content="{x:Bind services:LocalizationService.Instance.GetString('ManageCompetitors'), Mode=OneWay}"
+                                   NavigateUri="competitors"/>
+                </ItemsControl.Items>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <HyperlinkButton Content="{Binding}" Margin="0,4,0,0"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </Grid>
 </Page> 

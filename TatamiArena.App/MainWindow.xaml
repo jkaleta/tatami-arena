@@ -4,24 +4,32 @@
     x:Class="TatamiArena.App.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:TatamiArena.App"
+    xmlns:services="using:TatamiArena.App.Services"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="Tatami Arena">
-
+    Title="{x:Bind services:LocalizationService.Instance.GetCurrentLanguage(), Mode=OneWay}">
+    
     <Grid>
         <NavigationView x:Name="NavView" 
                     PaneDisplayMode="Left"
                     IsSettingsVisible="False"
                     IsBackButtonVisible="Collapsed"
-                    Header="Tatami Arena">
+                    Header="{x:Bind services:LocalizationService.Instance.GetString('AppTitle'), Mode=OneWay}">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Home" Content="Home" Tag="home"/>
-                <NavigationViewItem Icon="List" Content="Competitions" Tag="competitions"/>
-                <NavigationViewItem Icon="List" Content="Categories" Tag="categories"/>
-                <NavigationViewItem Icon="People" Content="Competitors" Tag="competitors"/>
+                <NavigationViewItem Icon="Home" Content="{x:Bind services:LocalizationService.Instance.GetString('Home'), Mode=OneWay}" Tag="home"/>
+                <NavigationViewItem Icon="List" Content="{x:Bind services:LocalizationService.Instance.GetString('Competitions'), Mode=OneWay}" Tag="competitions"/>
+                <NavigationViewItem Icon="List" Content="{x:Bind services:LocalizationService.Instance.GetString('Categories'), Mode=OneWay}" Tag="categories"/>
+                <NavigationViewItem Icon="People" Content="{x:Bind services:LocalizationService.Instance.GetString('Competitors'), Mode=OneWay}" Tag="competitors"/>
             </NavigationView.MenuItems>
+            <NavigationView.PaneFooter>
+                <ComboBox x:Name="LanguageSelector" 
+                          PlaceholderText="{x:Bind services:LocalizationService.Instance.GetString('Language'), Mode=OneWay}"
+                          SelectionChanged="LanguageSelector_SelectionChanged">
+                    <ComboBoxItem Content="{x:Bind services:LocalizationService.Instance.GetString('English'), Mode=OneWay}" Tag="en-US"/>
+                    <ComboBoxItem Content="{x:Bind services:LocalizationService.Instance.GetString('Polish'), Mode=OneWay}" Tag="pl-PL"/>
+                </ComboBox>
+            </NavigationView.PaneFooter>
             <Frame x:Name="ContentFrame"/>
         </NavigationView>
     </Grid>
